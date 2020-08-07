@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.Mapper.LoginMapper">
+
+
+
+    <select id="getInfo" parameterType="String" resultType="com.example.demo.Entity.Login">
+    SELECT * FROM login WHERE user_number = #{user_number} AND password = #{password}
+    </select>
+
+
+
+    <insert id="add">
+    INSERT INTO login (user_name,password,user_number) values (#{user_name},#{password},#{user_number})
+    </insert>
+
+
+
+
+
+</mapper>
+
+
