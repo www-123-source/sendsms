@@ -9,9 +9,9 @@ import java.util.Set;
 //public class SendSms implements Runnable {
 //    public void run() {
 //        //测试
-//        public static String ACCOUNT_SID = "8aaf0708732220a601739359887531af";
-//        public static String ACCOUNT_TOKEN = "48408b50d1d24485ab2485d785491ae6";
-//        public static String ACCOUNT_APPID = "8aaf0708732220a601739359896d31b6";
+//        public static String ACCOUNT_SID = "*************";
+//        public static String ACCOUNT_TOKEN = "************";
+//        public static String ACCOUNT_APPID = "***********";
 //
 //
 //            //生产环境请求地址：app.cloopen.com
@@ -19,14 +19,14 @@ import java.util.Set;
 //            //请求端口
 //            String serverPort = "8883";
 //            //请使用管理控制台中已创建应用的APPID
-//            String appId = "8aaf0708732220a601739359896d31b6";
+//            String appId = "************";
 //            CCPRestSmsSDK sdk = new CCPRestSmsSDK();
 //            sdk.init(serverIp, serverPort);
 //            sdk.setAccount(ACCOUNT_SID, ACCOUNT_TOKEN);
 //            sdk.setAppId(ACCOUNT_APPID);
 //
 //            sdk.setBodyType(BodyType.Type_JSON);
-//            String to = "15908128683";  //绑定的测试手机号
+//            String to = "*******";  //绑定的测试手机号
 //            String templateId = "1";   //短信模板
 //            String[] datas = {"2"};   //分钟参数
 //
