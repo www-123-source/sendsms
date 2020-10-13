@@ -21,7 +21,7 @@
 //    @Override
 //    public void run() {
 //
-//            DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "*******", "*******");
+//            DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "", "");
 //            IAcsClient client = new DefaultAcsClient(profile);
 //
 //            CommonRequest request = new CommonRequest();
@@ -30,10 +30,10 @@
 //            request.setSysVersion("2017-05-25");
 //            request.setSysAction("SendSms");
 //            request.putQueryParameter("RegionId", "cn-hangzhou");
-//            request.putQueryParameter("PhoneNumbers", "*******");
+//            request.putQueryParameter("PhoneNumbers", "");
 //            request.putQueryParameter("SignName", "dramstdio");
-//            request.putQueryParameter("TemplateCode", "*******");
-//            request.putQueryParameter("TemplateParam", "{ \"code\": ***}");
+//            request.putQueryParameter("TemplateCode", "");
+//            request.putQueryParameter("TemplateParam", "{ \"code\": }");
 //            try {
 //                CommonResponse response = client.getCommonResponse(request);
 //                System.out.println(response.getData());
