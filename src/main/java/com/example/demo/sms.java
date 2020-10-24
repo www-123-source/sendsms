@@ -2,22 +2,29 @@ package com.example.demo;
 
 import com.cloopen.rest.sdk.CCPRestSmsSDK;
 import com.example.demo.Entity.MessageConfig;
-
+import lombok.Data;
 import java.util.HashMap;
 import java.util.Set;
 
+@Data
 public class sms implements Runnable{
 
     private MessageConfig messageConfig;
+
+    private HashMap<String, Object> result;
 
     public sms(MessageConfig messageConfig){
         this.messageConfig=messageConfig;
     }
 
- 
     public void run(){
-
-        HashMap<String, Object> result = null;
+//        try {
+//
+//            Thread.sleep(10000);
+//        }
+//        catch (Exception e){
+//            e.printStackTrace();
+//        }
         CCPRestSmsSDK restAPI = new CCPRestSmsSDK();
         restAPI.init("app.cloopen.com", "8883");
         // 初始化服务器地址和端口，生产环境配置成app.cloopen.com，端口是8883.
@@ -42,4 +49,10 @@ public class sms implements Runnable{
         }
     }
 
+
+
+
+
 }
+
+

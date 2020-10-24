@@ -6,26 +6,42 @@
 
 
     <delete id="deleteById" parameterType="int">
-    DELETE FROM book WHERE id = #{id}
+    DELETE  FROM book WHERE id = #{id}
     </delete>
 
 
-    <update id="updateById" parameterType="com.example.demo.Entity.Book">
-    UPDATE book SET consignee_name = #{consignee_name},consignee_number = #{consignee_number} WHERE id = #{id}
+<!--    <update id="updateById" parameterType="com.example.demo.Entity.Book">-->
+<!--    UPDATE book SET consignee_name = #{consignee_name},consignee_number = #{consignee_number},group_id = #{group_id} WHERE id = #{id}-->
+<!--    </update>-->
+
+
+
+
+    <update id="updateById" parameterType="Book">
+        UPDATE book
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="consignee_name != null  and consignee_name != ''">consignee_name  = #{consignee_name},</if>
+            <if test="consignee_number != null  and consignee_number != ''">consignee_number = #{consignee_number},</if>
+            <if test="group_id != null  and group_id != ''">group_id = #{group_id},</if>
+            <if test="user_id != null and user_id !=''">user_id = #{user_id},</if>
+        </trim>
+        WHERE  id = #{id}
     </update>
 
 
-<!--    <select id="selectByUser_id" parameterType="int" parameterMap="com.example.demo.Entity.Book">-->
-<!--    select consignee_name, consignee_number,group_id from book where user_id = #{user_id}-->
-<!--    </select>-->
+    <select id="selectByUser_id" parameterType="int" resultType="com.example.demo.Entity.Book">
+    select consignee_name, consignee_number,group_id from book where user_id = #{user_id}
+    </select>
 
     <insert id="InsertUser" parameterType="java.util.List" useGeneratedKeys="false">
-        INSERT ignore INTO book ( user_id, consignee_name, consignee_number ) VALUES
+        INSERT ignore INTO book(consignee_number,consignee_name,email,user_id,group_id) VALUES
         <foreach collection="list" item="item"  index="index" separator=",">
             (
+            <if test="#{item.consignee_number}!=null and #{item.consignee_number}!='' ">#{item.consignee_number}, </if>
+            <if test="#{item.consignee_name}!=null and #{item.consignee_name}!='' ">#{item.consignee_name},</if>
+            <if test="#{item.email}!=null and #{item.email}!=''">#{item.email},</if>
             <if test="#{item.user_id}!=null and #{item.user_id}!='' ">#{item.user_id}, </if>
-            <if test="#{item.consignee_name}!=null and #{item.consignee_name}!='' ">#{item.consignee_name}, </if>
-            <if test="#{item.consignee_number}!=null and #{item.consignee_number}!='' ">#{item.consignee_number}</if>
+            <if test="#{item.group_id}!=null and #{item.group_id}!='' ">#{item.group_id}</if>
             )
         </foreach>
     </insert>
@@ -34,7 +50,54 @@
 
 
 
+<!--    <select id="selectById" resultType="com.example.demo.Entity.Book" parameterType="int">-->
+<!--      SELECT g.group from login l,mygroup g WHERE l.id = g.user_id and l.id = #{id}-->
+<!--    </select>-->
 
+
+
+    <select id="selectByGroupId" resultType="com.example.demo.Entity.Book" parameterType="int">
+
+        SELECT b.consignee_number,b.consignee_name,g.my_group,b.id from mygroup g,book b WHERE g.group_id = b.group_id and b.user_id= #{user_id}
+    </select>
+
+
+    <insert id="insertBook" parameterType="Book" useGeneratedKeys="true">
+        INSERT INTO book ( consignee_name, consignee_number,group_id,user_id) VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="#{consignee_name} != null  and #{consignee_name} != ''">#{consignee_name}, </if>
+            <if test="#{consignee_number} != null  and #{consignee_number} != ''">#{consignee_number}, </if>
+            <if test="#{group_id} != null  and #{group_id} != ''">#{group_id}, </if>
+            <if test="#{user_id} != null and #{user_id} !=''">#{user_id},</if>
+        </trim>
+    </insert>
+
+
+    <sql id="ResultVo">
+        SELECT b.consignee_name,b.consignee_number,g.my_group from mygroup g,book b
+    </sql>
+
+    <select id="FuzzySelect" resultType="com.example.demo.Entity.Book">
+        <include refid="ResultVo" />
+        <where>
+        <if test="consignee_name != null and consignee_name != ''">
+            and consignee_name like CONCAT(CONCAT('%',#{consignee_name}),'%')
+            </if>
+            <if test="consignee_number != null and consignee_number != ''">
+            and consignee_number like CONCAT(CONCAT('%',#{consignee_number}),'%')
+            </if>
+            <if test="user_id!=null and user_id !=''">
+            and b.user_id = #{user_id}
+            </if>
+            and b.group_id = g.group_id
+        </where>
+    </select>
+
+
+    <select id="selectByNum" resultType="com.example.demo.Entity.Book" parameterType="String">
+
+        SELECT consignee_name from book WHERE consignee_number = #{consignee_number}
+    </select>
 
 
     </mapper>

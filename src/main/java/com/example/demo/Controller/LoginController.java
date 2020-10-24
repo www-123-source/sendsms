@@ -40,14 +40,14 @@ public class LoginController {
         System.out.println("输入进来的账号" + user_number);
         System.out.println("输入进来的密码" + password);
         System.out.println("输入进来的用户姓名" + user_name);
-        try {
-            loginService.add(user_name,password,user_number);
-            return "注册成功";
-        }
-            catch(Exception e){
-            return "注册失败";
+
+        loginService.add(user_name,password,user_number);
+        return "注册成功";
+
+
+
             
-        }
+
 
 
     }

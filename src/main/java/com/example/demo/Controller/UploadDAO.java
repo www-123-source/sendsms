@@ -17,8 +17,9 @@ public class UploadDAO {
     private BookService bookService;
 
     @SneakyThrows
-    public void save(List<UploadBook> list) throws DuplicateKeyException {
-        bookService.InsertUser(list);
-        Iterator itr= list.iterator();
+    public void save(List<UploadBook> list,int hhh,int aaa) throws DuplicateKeyException {
+        bookService.InsertUser(list, hhh, aaa);
+
+
     }
 }

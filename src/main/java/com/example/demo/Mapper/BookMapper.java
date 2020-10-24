@@ -1,5 +1,6 @@
 package com.example.demo.Mapper;
 
+import com.alibaba.fastjson.JSONArray;
 import com.example.demo.Entity.Book;
 import com.example.demo.Entity.UploadBook;
 import org.apache.ibatis.annotations.Mapper;
@@ -12,7 +13,18 @@ public interface BookMapper {
 
     int updateById(Book book);
 
-    Book selectByUser_id(int user_id);
+    List<Book> selectByUser_id(int user_id);
 
-    int InsertUser(List<UploadBook> users);
+    int InsertUser(List<Book> books);
+
+
+//    List<Book> selectById(int id);
+
+    List<Book> selectByGroupId(int user_id);
+
+    int insertBook (Book book);
+
+    List<Book> FuzzySelect(Book book);
+
+    Book selectByNum(String consignee_number);
 }

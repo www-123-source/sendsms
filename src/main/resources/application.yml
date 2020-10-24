@@ -12,5 +12,23 @@ mybatis:
   typeAliasesPackage: com.example.demo
   mapperLocations: classpath:mybatis/**/*Mapper.xml
   configLocation: classpath:mybatis/mybatis-config.xml
-server:
+  server:
   port: 8080
+
+  application:
+    name: test-rabbitmq-producer
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    passowrd: guest
+    virtualHost: /
+
+application:
+  name: test-rabbitmq-consumer
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    passowrd: guest
+    virtualHost: /

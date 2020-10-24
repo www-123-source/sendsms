@@ -40,10 +40,13 @@ public class BookDateListener {
          */
         private static final int BATCH_COUNT = 5;
         List<UploadBook> list = new ArrayList<UploadBook>();
+
         /**
          * 假设这个是一个DAO，当然有业务逻辑这个也可以是一个service。当然如果不用存储这个对象没用。
          */
         private UploadDAO uploadDAO;
+        private int user_id;
+        private int group_id;
 
         public UploadDataListener() {
             // 这里是demo，所以随便new一个。实际使用如果到了spring,请使用下面的有参构造函数
@@ -55,8 +58,10 @@ public class BookDateListener {
          *
          * @param uploadDAO
          */
-        public UploadDataListener(UploadDAO uploadDAO) {
+        public UploadDataListener(UploadDAO uploadDAO,int user_id,int group_id) {
             this.uploadDAO = uploadDAO;
+            this.user_id= user_id;
+            this.group_id = group_id;
         }
 
         /**
@@ -68,16 +73,17 @@ public class BookDateListener {
          */
         @SneakyThrows
         @Override
-        public void invoke(UploadBook data, AnalysisContext context) {
+        public void invoke(UploadBook data,AnalysisContext context) {
             LOGGER.info("解析到一条数据:{}", JSON.toJSONString(data));
             list.add(data);
             // 达到BATCH_COUNT了，需要去存储一次数据库，防止数据几万条数据在内存，容易OOM
             if (list.size() >= BATCH_COUNT) {
-                saveData();
+                saveData(list,user_id,group_id);
                 // 存储完成清理 list
                 list.clear();
             }
         }
+
 
         /**
          * 所有数据解析完成了 都会来调用
@@ -88,16 +94,17 @@ public class BookDateListener {
         @Override
         public void doAfterAllAnalysed(AnalysisContext context){
             // 这里也要保存数据，确保最后遗留的数据也存储到数据库
-            saveData();
+
+            saveData(list,user_id,group_id);
             LOGGER.info("所有数据解析完成！");
         }
 
         /**
          * 加上存储数据库
          */
-        private void saveData() {
+        private void saveData(List<UploadBook> list,int user_id,int group_id) {
             LOGGER.info("{}条数据，开始存储数据库！", list.size());
-            uploadDAO.save(list);
+            uploadDAO.save(list, user_id, group_id);
             LOGGER.info("存储数据库成功！");
         }
     }

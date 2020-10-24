@@ -8,9 +8,10 @@ public class Login {
     private String user_name;
     private String password;
 
-    private Integer user_number;
+    private String user_number;
 
-
+    private Book book;
+    private MyGroup myGroup;
 
 
 }
