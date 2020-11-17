@@ -28,9 +28,10 @@ public class sms implements Runnable{
         CCPRestSmsSDK restAPI = new CCPRestSmsSDK();
         restAPI.init("app.cloopen.com", "8883");
         // 初始化服务器地址和端口，生产环境配置成app.cloopen.com，端口是8883.
-        restAPI.setAccount("********", "*********");
+        restAPI.setAccount(
+                "aaf98f894f402f15014f47296f9305b6", "4c3bf9a9f1114bd2a85d1de6552a3143");
         // 初始化主账号名称和主账号令牌，登陆云通讯网站后，可在控制首页中看到开发者主账号ACCOUNT SID和主账号令牌AUTH TOKEN。
-        restAPI.setAppId("*******");
+        restAPI.setAppId("8aaf0708754a3ef2017572b5ce560d55");
         // 请使用管理控制台中已创建应用的APPID。
 //        result = restAPI.sendTemplateSMS("******","***" ,new String[]{"123","2"});
         result = restAPI.sendTemplateSMS(messageConfig.getSendPhones(),messageConfig.getTemplateId(),messageConfig.getReplaceData());

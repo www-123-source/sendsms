@@ -12,8 +12,10 @@ public class Book {
     private int group_id;
     private String my_group;
 
+
     private MyGroup myGroup;
     private Login login;
+
 
 
 }
