@@ -14,8 +14,9 @@ import result.CommonResult;
 @RequestMapping("/test")
 @Log4j2
 public class WeChatUserController {
+
     @ApiOperation("获取微信企业号成员")
-    @PostMapping("/WeChatUser")
+    @GetMapping("/WeChatUser")
     @ResponseBody
     public CommonResult WeChatUser(WeChatConfig weChatConfig) {
         try {

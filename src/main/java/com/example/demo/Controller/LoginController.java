@@ -19,7 +19,7 @@ public class LoginController {
     private LoginService loginService;
 
     @ApiOperation("用户登录")
-    @PostMapping("/login")
+    @GetMapping("/login")
     @ResponseBody
     public String Login(String user_number, String password) {
         System.out.println("输入进来的账号" + user_number);
@@ -44,17 +44,7 @@ public class LoginController {
         loginService.add(user_name,password,user_number);
         return "注册成功";
 
-
-
-            
-
-
-
     }
-
-
-
-
 
 }
 

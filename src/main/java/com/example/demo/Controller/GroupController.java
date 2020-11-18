@@ -8,10 +8,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import result.CommonResult;
 
 import java.util.List;
@@ -25,7 +22,7 @@ public class GroupController {
     private GroupService groupService;
 
     @ApiOperation("查询用户分组")
-    @PostMapping("/group1")
+    @GetMapping("/group1")
     @ResponseBody
     public List<MyGroup> selectById (int id){return groupService.selectById(id);}
 
@@ -37,14 +34,14 @@ public class GroupController {
     }
 
     @ApiOperation("删除分组")
-    @PostMapping("/delete2")
+    @DeleteMapping("/delete2")
     @ResponseBody
     public CommonResult deleteByGroupId (int group_id){
         return CommonResult.success(groupService.deleteByGroupId(group_id));
     }
 
     @ApiOperation("修改分组")
-    @PostMapping("/update2")
+    @PutMapping("/update2")
     @ResponseBody
     public CommonResult updateByGroupId (@RequestBody MyGroup myGroup){
         return CommonResult.success(groupService.updateByGroupId(myGroup));

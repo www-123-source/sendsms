@@ -1,19 +1,24 @@
 
 
 spring:
+  server:
+    port: 8080
   datasource:
+#    username: root
+#    password: root
+#    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT%2B8
     username: root
-    password: root
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT%2B8
-#  type: com.alibaba.druid.pool.DruidDataSource
+    password: 3306
+    url: jdbc:mysql://localhost:3306/test1?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT%2B8
     driver-class-name: com.mysql.cj.jdbc.Driver
+#  type: com.alibaba.druid.pool.DruidDataSource
+
 
 mybatis:
   typeAliasesPackage: com.example.demo
   mapperLocations: classpath:mybatis/**/*Mapper.xml
   configLocation: classpath:mybatis/mybatis-config.xml
-  server:
-  port: 8080
+
 
   application:
     name: test-rabbitmq-producer

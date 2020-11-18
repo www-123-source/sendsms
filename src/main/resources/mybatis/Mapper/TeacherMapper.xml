@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.Mapper.TeacherMapper">
+<!--    /**-->
+<!--    `-->
+<!--    `working_department_id` int(11)-->
+<!--    `sex` enum('男','女','保密')-->
+<!--    `organization` enum('在编','编外')-->
+<!--    `working_status` enum('在岗','病休')-->
+<!--    `office_id` int(11)-->
+<!--    `Job_position_id` int(11)-->
+<!--    `class_status` enum('校内专任','其他')-->
+<!--    `phone_number` varchar(11)-->
+<!--    `remark` text COLLATE utf8mb4_bin,-->
+<!--    `office_director` enum('教研室主任')*/-->
+
+    <update id="updateTeacher"  parameterType="Teacher">
+        UPDATE teacher
+        <trim prefix="set" suffixOverrides=",">
+            <if test="id!=null">id=#{id},</if>
+            <if test="teacherName!=null">teacher_name=#{teacherName},</if>
+<!--            <if test="teacherId!=null">teacher_id=#{teacherId},</if>-->
+            <if test="administrationDepartmentId!=null">administration_department_id=#{administrationDepartmentId},</if>
+            <if test="workingDepartmentId!=null">working_department_id=#{workingDepartmentId},</if>
+            <if test="sex!=null">sex=#{sex},</if>
+            <if test="organization!=null">organization=#{organization},</if>
+            <if test="workingStatus!=null">working_status=#{workingStatus},</if>
+            <if test="phoneNumber!=null">phone_number=#{phoneNumber},</if>
+            <if test="remark!=null">remark=#{remark},</if>
+            <if test="officeDirector!=null">office_director=#{officeDirector},</if>
+        </trim>
+        WHERE teacher_id = #{teacherId}
+    </update>
+
+
+
+</mapper>

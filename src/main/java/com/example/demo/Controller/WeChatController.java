@@ -14,6 +14,7 @@ import result.CommonResult;
 @RequestMapping("/test")
 @Log4j2
 public class WeChatController {
+
     @ApiOperation("微信企业号")
     @PostMapping("/WeChatSend")
     @ResponseBody

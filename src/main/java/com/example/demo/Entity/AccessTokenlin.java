@@ -4,8 +4,10 @@ import lombok.Data;
 
 @Data
 public class AccessTokenlin {
+
     private String accessToken;
     private long expireTime;
+
     public AccessTokenlin(String accessToken, String expirein) {
 
         this.accessToken = accessToken;

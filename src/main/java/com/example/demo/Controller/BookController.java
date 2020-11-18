@@ -30,21 +30,21 @@ public class BookController {
     private UploadDAO uploadDAO;
 
     @ApiOperation("删除用户信息")
-    @PostMapping("/delete1")
+    @DeleteMapping("/delete1")
     @ResponseBody
     public int delete(int id) {
         return bookService.deleteById(id);
     }
 
     @ApiOperation("修改用户信息")
-    @PostMapping("/update")
+    @PutMapping("/update")
     @ResponseBody
     public int updateById(@RequestBody Book book) {
         return bookService.updateById(book);
     }
 
     @ApiOperation("查询用户信息")
-    @PostMapping("/select")
+    @GetMapping("/select")
     @ResponseBody
     public List<Book> selectByUser_id(int user_id) {
         return bookService.selectByUser_id(user_id);
@@ -88,18 +88,18 @@ public class BookController {
 //    public List<Book> selectById(int id){return bookService.selectById(id);}
 
     @ApiOperation("分组查询联系人")
-    @PostMapping("/group2")
+    @GetMapping("/group2")
     @ResponseBody
     public List<Book> selectByGroupId(int user_id){return bookService.selectByGroupId(user_id);}
 
     @ApiOperation("新增联系人")
-    @PostMapping("/inster1")
+    @PostMapping("/insert1")
     @ResponseBody
     public int insertBook (@RequestBody Book book){
         return bookService.insertBook(book);
     }
     @ApiOperation("模糊查询")
-    @PostMapping("/FuzzySelect")
+    @GetMapping("/FuzzySelect")
     @ResponseBody
     public List<Book> FuzzySelect(@RequestBody Book book){return bookService.FuzzySelect(book);}
 
