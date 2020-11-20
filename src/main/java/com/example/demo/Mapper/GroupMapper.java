@@ -10,11 +10,11 @@ import java.util.List;
 @Mapper
 public interface GroupMapper {
 
-    List<MyGroup> selectById(int id);
+        List<MyGroup> selectById(int id);
 
-    int insertGroup (MyGroup myGroup);
+        int insertGroup (MyGroup myGroup);
 
-    int deleteByGroupId(int group_id);
+        int deleteByGroupId(int group_id);
 
-    int updateByGroupId(MyGroup myGroup);
+        int updateByGroupId(MyGroup myGroup);
 }

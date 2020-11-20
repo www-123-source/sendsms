@@ -10,6 +10,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import result.CommonResult;
 
+import java.util.List;
+
 @Api(tags ="教师信息",description = "teacher")
 @RestController
 @RequestMapping("/teacher")
@@ -34,6 +36,12 @@ public class TeacherController {
     @PutMapping("/update")
     public int  updateTeacher(Teacher teacher){
         return teacherService.updateTeacher(teacher);
+    }
+
+    @ApiOperation("根据部门信息查询教师姓名和电话号码")
+    @GetMapping("/selectDepartment")
+    public List<Teacher> selectTeacherDepartment(String administrationDepartmentName, String workingDepartmentName, String JobPositionName ){
+        return teacherService.selectTeacherDepartment(administrationDepartmentName,workingDepartmentName,JobPositionName);
     }
 
 }

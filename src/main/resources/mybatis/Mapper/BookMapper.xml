@@ -93,7 +93,6 @@
         </where>
     </select>
 
-
     <select id="selectByNum" resultType="com.example.demo.Entity.Book" parameterType="String">
 
         SELECT consignee_name from book WHERE consignee_number = #{consignee_number}

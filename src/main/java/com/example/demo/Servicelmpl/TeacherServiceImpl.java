@@ -6,6 +6,8 @@ import com.example.demo.Service.TeacherService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
+
 @Service
 public class TeacherServiceImpl implements TeacherService {
 
@@ -29,6 +31,11 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public int updateTeacher(Teacher teacher){
         return teacherMapper.updateTeacher(teacher);
+    }
+
+    @Override
+    public List<Teacher> selectTeacherDepartment(String administrationDepartmentName, String workingDepartmentName, String JobPositionName ){
+        return teacherMapper.selectTeacherDepartment(administrationDepartmentName,workingDepartmentName,JobPositionName);
     }
 
 }

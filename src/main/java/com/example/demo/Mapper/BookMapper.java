@@ -9,22 +9,22 @@ import java.util.List;
 
 @Mapper
 public interface BookMapper {
-    int deleteById(int id);
 
-    int updateById(Book book);
+        int deleteById(int id);
 
-    List<Book> selectByUser_id(int user_id);
+        int updateById(Book book);
 
-    int InsertUser(List<Book> books);
+        List<Book> selectByUser_id(int user_id);
 
+        int InsertUser(List<Book> books);
 
-//    List<Book> selectById(int id);
+        List<Book> selectByGroupId(int user_id);
 
-    List<Book> selectByGroupId(int user_id);
+        int insertBook (Book book);
 
-    int insertBook (Book book);
+        List<Book> FuzzySelect(Book book);
 
-    List<Book> FuzzySelect(Book book);
+        Book selectByNum(String consignee_number);
 
-    Book selectByNum(String consignee_number);
+    //    List<Book> selectById(int id);
 }

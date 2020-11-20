@@ -11,7 +11,6 @@
     </select>
 
 
-
     <insert id="add">
     INSERT INTO login (user_name,password,user_number) values (#{user_name},#{password},#{user_number})
     </insert>

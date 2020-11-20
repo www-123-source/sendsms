@@ -1,13 +1,12 @@
 package com.example.demo.Servicelmpl;
 
-import com.alibaba.fastjson.JSONArray;
 import com.example.demo.Entity.Book;
 import com.example.demo.Entity.UploadBook;
 import com.example.demo.Mapper.BookMapper;
 import com.example.demo.Service.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +14,7 @@ import java.util.List;
 
 public class BookServicelmpl implements BookService {
 
-    @Autowired
+    @Resource
     private BookMapper bookMapper;
 
     @Override

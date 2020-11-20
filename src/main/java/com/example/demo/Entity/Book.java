@@ -5,7 +5,9 @@ import lombok.Data;
 @Data
 public class Book {
 
-
+    /**
+     * book表中的
+     */
     private int id;
     private int user_id;
     private String consignee_number;
@@ -14,9 +16,10 @@ public class Book {
     private int group_id;
     private String my_group;
 
+    /**
+     * myGroup表中的
+     */
     private MyGroup myGroup;
     private Login login;
-
-
 
 }

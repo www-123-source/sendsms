@@ -4,23 +4,9 @@ import lombok.Data;
 
 @Data
 public class Teacher {
- /**
-  `id` int(11)
-  `teacher_name` varchar(255)
-  `teacher_id` int(11)
-  `administration_derpartment_id` int(11)
-  `working_department_id` int(11)
-  `sex` enum('男','女','保密')
-            `organization` enum('在编','编外')
-            `working_status` enum('在岗','病休')
-            `office_id` int(11)
-  `Job_position_id` int(11)
-  `class_status` enum('校内专任','其他')
-            `phone_number` varchar(11)
-  `remark` text COLLATE utf8mb4_bin,
-            `office_director` enum('教研室主任')*/
-
-
+       /**
+        * teacher 表中字段
+        */
         private int id;
         private String teacherName;
         private int teacherId;
@@ -37,4 +23,33 @@ public class Teacher {
         private String officeDirector;
 
 
+       /**
+        * administration_department 表中的数据
+        */
+
+       private String administrationDepartmentName;
+       /**
+        * job_position 表中的数据
+        */
+       private String JobPositionName;
+       /**
+        * working_department 表中的数据
+        */
+       private String workingDepartmentName;
+
 }
+/**
+ `id` int(11)
+ `teacher_name` varchar(255)
+ `teacher_id` int(11)
+ `administration_derpartment_id` int(11)
+ `working_department_id` int(11)
+ `sex` enum('男','女','保密')
+ `organization` enum('在编','编外')
+ `working_status` enum('在岗','病休')
+ `office_id` int(11)
+ `Job_position_id` int(11)
+ `class_status` enum('校内专任','其他')
+ `phone_number` varchar(11)
+ `remark` text COLLATE utf8mb4_bin,
+ `office_director` enum('教研室主任')*/

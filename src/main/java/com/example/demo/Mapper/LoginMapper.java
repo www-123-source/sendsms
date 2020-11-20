@@ -10,7 +10,6 @@ public interface LoginMapper {
 
     Login getInfo(String user_number, String password) ;
 
-
     int add(String user_name,String password,String user_number);
 
 

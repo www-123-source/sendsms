@@ -90,17 +90,23 @@ public class BookController {
     @ApiOperation("分组查询联系人")
     @GetMapping("/group2")
     @ResponseBody
-    public List<Book> selectByGroupId(int user_id){return bookService.selectByGroupId(user_id);}
+    public List<Book> selectByGroupId(int user_id){
+        return bookService.selectByGroupId(user_id);
+    }
 
     @ApiOperation("新增联系人")
     @PostMapping("/insert1")
     @ResponseBody
     public int insertBook (@RequestBody Book book){
+
         return bookService.insertBook(book);
     }
+
     @ApiOperation("模糊查询")
     @GetMapping("/FuzzySelect")
     @ResponseBody
-    public List<Book> FuzzySelect(@RequestBody Book book){return bookService.FuzzySelect(book);}
+    public List<Book> FuzzySelect(@RequestBody Book book){
+        return bookService.FuzzySelect(book);
+    }
 
 }

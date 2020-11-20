@@ -9,7 +9,6 @@ public class AccessTokenlin {
     private long expireTime;
 
     public AccessTokenlin(String accessToken, String expirein) {
-
         this.accessToken = accessToken;
         this.expireTime = System.currentTimeMillis() + Integer.parseInt(expirein)*1000;
     }
@@ -17,7 +16,7 @@ public class AccessTokenlin {
     public boolean isExpired() {
         return System.currentTimeMillis()>expireTime;
     }
-    public String getAccessToken() {
+    public String getAccessToken(){
         return accessToken;
     }
     public void setAccessToken(String accessToken) {
