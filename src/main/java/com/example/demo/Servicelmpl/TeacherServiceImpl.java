@@ -34,8 +34,19 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public List<Teacher> selectTeacherDepartment(String administrationDepartmentName, String workingDepartmentName, String JobPositionName ){
-        return teacherMapper.selectTeacherDepartment(administrationDepartmentName,workingDepartmentName,JobPositionName);
+    public List<Teacher> selectTeacherDepartment(String administrationDepartmentName, String workingDepartmentName, String JobPositionName,String tagName  ){
+        return teacherMapper.selectTeacherDepartment(administrationDepartmentName,workingDepartmentName,JobPositionName,tagName);
+
+    }
+
+    @Override
+    public int  updateTagName(String teacherName,String tagName){
+        return teacherMapper.updateTagName(teacherName,tagName);
+    }
+
+    @Override
+    public  int deleteTagName(String teacherName){
+        return teacherMapper.deleteTagName(teacherName);
     }
 
 }

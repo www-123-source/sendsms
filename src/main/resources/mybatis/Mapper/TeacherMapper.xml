@@ -24,13 +24,17 @@
 select teacher.teacher_name,teacher.phone_number,
 			administration_department.administration_department_name,
 			job_position.Job_position_name,
-			working_department.working_department_name
+			working_department.working_department_name,
+			tagmap.teacher_id ,tagmap.teacher_tag_id,
+			tag.tag_id,tag.tag_name
 			from
-			teacher,administration_department,job_position,working_department
+			teacher,administration_department,job_position,working_department,tagmap,tag
 where
-	 teacher.administration_department_id = administration_department.administration_department_id
-     and teacher.Job_position_id = job_position.Job_position_id
-	 and teacher.working_department_id = working_department.working_department_id
+	        teacher.administration_department_id = administration_department.administration_department_id
+         and teacher.Job_position_id = job_position.Job_position_id
+         and teacher.working_department_id = working_department.working_department_id
+         and ( teacher.teacher_id = tagmap.teacher_id
+				 and tagmap.teacher_tag_id = tag.tag_id)
     </sql>
 
     <select id="selectTeacherDepartment" resultType="com.example.demo.Entity.Teacher">
@@ -45,21 +49,27 @@ where
             <if test="JobPositionName != null and JobPositionName != ''">
                 and Job_position_name = #{JobPositionName}
             </if>
-
+            <if test="tagName != null and tagName != ''">
+                and tag_name = #{tagName}
+            </if>
     </select>
 
+    <update id="updateTagName" parameterType="Teacher">
+       UPDATE  tag t1 , tagmap t2 ,teacher t3 set t1.tag_name = #{tagName}
+       where   t1.tag_id = t2.teacher_tag_id
+       and t2.teacher_id = t3.teacher_id
+       and t3.teacher_name =#{teacherName}
+
+    </update>
+
+    <delete id="deleteTagName" parameterType="Teacher">
+        DELETE tag FROM tag ,tagmap,teacher WHERE
+        tag.tag_id = tagmap.teacher_tag_id
+	    and tagmap.teacher_id = teacher.teacher_id
+	    and teacher.teacher_name = #{tagName}
+    </delete>
+
+
+
+
 </mapper>
-
-
-        <!--    /**-->
-        <!--    `-->
-        <!--    `working_department_id` int(11)-->
-        <!--    `sex` enum('男','女','保密')-->
-        <!--    `organization` enum('在编','编外')-->
-        <!--    `working_status` enum('在岗','病休')-->
-        <!--    `office_id` int(11)-->
-        <!--    `Job_position_id` int(11)-->
-        <!--    `class_status` enum('校内专任','其他')-->
-        <!--    `phone_number` varchar(11)-->
-        <!--    `remark` text COLLATE utf8mb4_bin,-->
-        <!--    `office_director` enum('教研室主任')*/-->

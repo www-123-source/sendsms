@@ -43,5 +43,25 @@ public interface TeacherMapper {
      * @param JobPositionName
      * @return
      */
-    List<Teacher> selectTeacherDepartment(String administrationDepartmentName, String workingDepartmentName, String JobPositionName );
+    List<Teacher> selectTeacherDepartment(String administrationDepartmentName, String workingDepartmentName, String JobPositionName,String tagName );
+
+    /**
+     * 根据 teacherName 修改标签名
+     * @return
+     */
+    int updateTagName(String teacherName,String tagName);
+
+    /**
+     * 根据 teacherName 删除标签名
+     * @return
+     */
+    int deleteTagName(String teacherName);
+
+    /**
+     * 根据姓名设置标签
+     */
+
+
+
+
 }

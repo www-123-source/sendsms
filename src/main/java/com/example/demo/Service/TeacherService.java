@@ -12,6 +12,9 @@ public interface TeacherService {
 
     int updateTeacher(Teacher teacher);
 
-    List<Teacher> selectTeacherDepartment(String administrationDepartmentName, String workingDepartmentName, String JobPositionName );
+    List<Teacher> selectTeacherDepartment(String administrationDepartmentName, String workingDepartmentName, String JobPositionName,String tagName  );
 
+    int updateTagName(String teacherName,String tagName);
+
+    int deleteTagName(String teacherName);
 }

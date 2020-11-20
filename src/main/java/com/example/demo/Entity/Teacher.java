@@ -37,6 +37,17 @@ public class Teacher {
         */
        private String workingDepartmentName;
 
+        /***
+         * tag 表中数据
+         */
+        private int tagId;
+        private String tagName;
+
+        /***
+         * tagmap 表中数据
+         */
+       // private int teacherId;
+        private int teacherTagId;
 }
 /**
  `id` int(11)

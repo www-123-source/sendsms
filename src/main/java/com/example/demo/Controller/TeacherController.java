@@ -40,8 +40,23 @@ public class TeacherController {
 
     @ApiOperation("根据部门信息查询教师姓名和电话号码")
     @GetMapping("/selectDepartment")
-    public List<Teacher> selectTeacherDepartment(String administrationDepartmentName, String workingDepartmentName, String JobPositionName ){
-        return teacherService.selectTeacherDepartment(administrationDepartmentName,workingDepartmentName,JobPositionName);
+    public List<Teacher> selectTeacherDepartment(String administrationDepartmentName, String workingDepartmentName, String JobPositionName,String tagName  ){
+        return teacherService.selectTeacherDepartment(administrationDepartmentName,workingDepartmentName,JobPositionName,tagName);
     }
+
+    @ApiOperation("根据 teacherName 修改标签名")
+    @PostMapping("/updateTagName")
+    public int  updateTagName(String teacherName,String tagName){
+        return teacherService.updateTagName(teacherName,tagName);
+    }
+
+    @ApiOperation("根据 teacherName 删除标签名")
+    @DeleteMapping("/deleteTagName")
+    public  int deleteTagName(String teacherName){
+        return teacherService.deleteTagName(teacherName);
+    }
+
+
+
 
 }
