@@ -54,38 +54,19 @@ public class BookController {
     @ApiOperation("导入用户表格")
     @PostMapping("/excel")
     @ResponseBody
-    public ResponseEntity insertUser(@RequestBody MultipartFile file,
-                                      @RequestParam int user_id,
-                                      @RequestParam int group_id) throws IOException {
-        Map<String, Object> map = new HashMap<String, Object>();
-//        try {
-            EasyExcel.read(file.getInputStream(), UploadBook.class, new BookDateListener.UploadDataListener(uploadDAO,user_id,group_id)).sheet().doRead();
-//        }
-//        catch (DuplicateKeyException de){
-//            map.put("code", -2);   //  -2：插入重复用户
-//            map.put("message","请勿插入重复用户");
-//            return new ResponseEntity<Map<String, Object>>(map,HttpStatus.LOCKED);
-//        }
-//        catch (DataIntegrityViolationException de ){
-//            map.put("code", -3);   //  -3：插入设备不存在
-//            map.put("message","用户的设备格式错误");
-//            return new ResponseEntity<Map<String, Object>>(map, HttpStatus.LOCKED);
-//        }
-//        catch (Exception exception) {
-//            map.put("code", -1);  // -1:未知错误
-//            map.put("message","系统错误");
-//            return new ResponseEntity<Map<String, Object>>(map, HttpStatus.LOCKED);
-//        }
+    public ResponseEntity insertUser(@RequestBody MultipartFile file, @RequestParam int user_id,@RequestParam int group_id) throws IOException {
+        Map<String, Object> map = new HashMap<String, Object>();   //创建一个Map 对象来返回结果
+
+        /**
+         * 读取传入进来的excel表
+         */
+        EasyExcel.read(file.getInputStream(),
+                        UploadBook.class,
+                        new BookDateListener.UploadDataListener(uploadDAO,user_id,group_id)).sheet().doRead();
         map.put("code", 1);
         map.put("message","导入成功");
         return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
     }
-
-
-//    @ApiOperation("查询用户分组")
-//    @PostMapping("/group1")
-//    @ResponseBody
-//    public List<Book> selectById(int id){return bookService.selectById(id);}
 
     @ApiOperation("分组查询联系人")
     @GetMapping("/group2")
@@ -108,5 +89,41 @@ public class BookController {
     public List<Book> FuzzySelect(@RequestBody Book book){
         return bookService.FuzzySelect(book);
     }
+
+
+/**
+    Map<String, Object> map = new HashMap<String, Object>();//创建一个Map 对象来返回结果
+//        try {
+            EasyExcel.read(file.getInputStream(), UploadBook.class, new BookDateListener.UploadDataListener(uploadDAO,user_id,group_id)).sheet().doRead();
+//        }
+//        catch (DuplicateKeyException de){
+//            map.put("code", -2);   //  -2：插入重复用户
+//            map.put("message","请勿插入重复用户");
+//            return new ResponseEntity<Map<String, Object>>(map,HttpStatus.LOCKED);
+//        }
+//        catch (DataIntegrityViolationException de ){
+//            map.put("code", -3);   //  -3：插入设备不存在
+//            map.put("message","用户的设备格式错误");
+//            return new ResponseEntity<Map<String, Object>>(map, HttpStatus.LOCKED);
+//        }
+//        catch (Exception exception) {
+//            map.put("code", -1);  // -1:未知错误
+//            map.put("message","系统错误");
+//            return new ResponseEntity<Map<String, Object>>(map, HttpStatus.LOCKED);
+//        }
+        map.put("code", 1);
+        map.put("message","导入成功");
+        return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
+}
+*/
+
+
+
+//    @ApiOperation("查询用户分组")
+//    @PostMapping("/group1")
+//    @ResponseBody
+//    public List<Book> selectById(int id){return bookService.selectById(id);}
+
+
 
 }

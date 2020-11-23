@@ -4,6 +4,7 @@ import com.example.demo.Entity.Teacher;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -58,10 +59,23 @@ public interface TeacherMapper {
     int deleteTagName(String teacherName);
 
     /**
-     * 根据姓名设置标签
+     * 查询教师信息
+     * @param
      */
+//    @Select("select * from teacher where teacher_name = #{teacherName")
+//    int selectTeacher(String teacher);
 
+    /**
+     * 给教师设置标签
+     * @param teacherName
+     * @param
+     * @param tagId
+     * @param teacherTagId
+     * @return
+     */
+    int insertTagName(String teacherName,int teacherTagId);
 
+    int insertTag(String tagName,int tagId);
 
 
 }

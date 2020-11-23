@@ -56,6 +56,34 @@ public class TeacherController {
         return teacherService.deleteTagName(teacherName);
     }
 
+    @ApiOperation("给教师设置标签与id")
+    @PostMapping("/addTagAndId")
+    public String insertTagAndId(String teacherName,int teacherTagId,String tagName,int tagId){
+
+        teacherService.insertTagName(teacherName,teacherTagId);
+        teacherService.insertTag(tagName,tagId);
+        return "设置标签与id成功";
+    }
+
+//    @ApiOperation("给教师设置标签")
+//    @PostMapping("/addTag")
+//    public int insertTagName(String teacherName,String tagName ,int tagId,int teacherTagId){
+//        teacherService.insertTagName(teacherName,teacherTagId);
+//        return teacherService.insertTagName(tagName,tagId);
+//    }
+
+//    @ApiOperation("给教师设置标签id")
+//    @PostMapping("/addTagId")
+//    public int insertTagName(String teacherName,int teacherTagId){
+//        return teacherService.insertTagName(teacherName,teacherTagId);
+//    }
+//
+//    @ApiOperation("给教师设置标签")
+//    @PostMapping("/addTag")
+//    public int insertTag(String tagName,int tagId){
+//        return teacherService.insertTag(tagName,tagId);
+//    }
+
 
 
 

@@ -25,8 +25,8 @@ import java.util.List;
 @RequestMapping("/test")
 @Log4j2
 public class SendSmsHandler {
-    @Autowired BookService bookService;
 
+    @Autowired BookService bookService;
 
     private HandlerConfig handlerConfig;
 
@@ -38,15 +38,20 @@ public class SendSmsHandler {
     @ApiOperation("状态回调")
     @PostMapping("/handler")
     @ResponseBody
-
     public CommonResult SendSmsHandler() {
 
 
+        /**
+         * 将时间戳转换成规定的格式
+         */
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
         String nowTime = sdf.format(date);
 
 
+        /**
+         * 加密
+         */
         String result = Md5Util.StringInMd5("aaf98f894f402f15014f47296f9305b6" + "4c3bf9a9f1114bd2a85d1de6552a3143" + nowTime);
         String r = result.toUpperCase();
         System.out.println(r);
@@ -60,6 +65,7 @@ public class SendSmsHandler {
             JSONObject json= JSONObject.parseObject(a);
             JSONArray ja =json.getJSONArray("reports");
             List<JSONObject> list=new ArrayList<>();
+
             for (Object obj:ja) {
                 String re=obj.toString();
                 JSONObject joni= JSONObject.parseObject(re);
@@ -73,11 +79,6 @@ public class SendSmsHandler {
             log.error(e.getMessage());
             return CommonResult.failed();
         }
-
-
-        }
-
-
-
     }
+}
 

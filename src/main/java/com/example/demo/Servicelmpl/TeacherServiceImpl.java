@@ -3,6 +3,7 @@ package com.example.demo.Servicelmpl;
 import com.example.demo.Entity.Teacher;
 import com.example.demo.Mapper.TeacherMapper;
 import com.example.demo.Service.TeacherService;
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,6 +14,8 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Resource
     private TeacherMapper teacherMapper;
+
+
 
     /**
      * 添加教师信息
@@ -47,6 +50,23 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public  int deleteTagName(String teacherName){
         return teacherMapper.deleteTagName(teacherName);
+    }
+
+//    @Override
+//    public int insertTagName(String teacherName,int teacherTagId){
+//
+//        teacherMapper.insertTagName(teacherName,teacherTagId);
+//        return teacherMapper.insertTag(tagName,tagId);
+//    }
+
+    @Override
+    public int insertTagName(String teacherName,int teacherTagId){
+        return teacherMapper.insertTagName(teacherName,teacherTagId);
+    }
+
+    @Override
+    public int insertTag(String tagName,int tagId){
+        return teacherMapper.insertTag(tagName,tagId);
     }
 
 }

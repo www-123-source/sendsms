@@ -7,6 +7,7 @@ spring:
 #    username: root
 #    password: root
 #    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT%2B8
+#  &allowMultiQueries=true 开启防止 jdbc sql截断
     username: root
     password: 3306
     url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT%2B8

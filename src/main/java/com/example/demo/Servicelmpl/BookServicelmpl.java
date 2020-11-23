@@ -32,6 +32,13 @@ public class BookServicelmpl implements BookService {
         return bookMapper.selectByUser_id(user_id);
     }
 
+    /**
+     * 处理easy excel 表导入的
+     * @param books
+     * @param user_id
+     * @param group_id
+     * @return
+     */
     @Override
     public int InsertUser(List<UploadBook> books, int user_id, int group_id) {
         List<Book> b = new ArrayList<>();
@@ -44,14 +51,11 @@ public class BookServicelmpl implements BookService {
             book.setGroup_id(group_id);
             b.add(book);
         }
-
-
         return bookMapper.InsertUser(b);
     }
 
 //    @Override
 //    public List<Book> selectById(int id) {return bookMapper.selectById(id);}
-
     @Override
     public List<Book> selectByGroupId(int user_id) {
         return bookMapper.selectByGroupId(user_id);
@@ -59,8 +63,6 @@ public class BookServicelmpl implements BookService {
 
     @Override
     public int insertBook(Book book) {
-
-
         return bookMapper.insertBook(book);
     }
 

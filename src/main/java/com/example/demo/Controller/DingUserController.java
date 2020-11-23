@@ -28,10 +28,10 @@ import java.util.HashMap;
 @Log4j2
 @Data
 public class DingUserController {
+
     @ApiOperation("钉钉用户")
     @PostMapping("/DingUser")
     @ResponseBody
-
     public CommonResult DingUser(String PhoneNumber) throws ApiException
     {
         DingConfig dingConfig = new DingConfig();

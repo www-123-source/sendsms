@@ -34,7 +34,9 @@
     </select>
 
     <insert id="InsertUser" parameterType="java.util.List" useGeneratedKeys="false">
+
         INSERT ignore INTO book(consignee_number,consignee_name,email,user_id,group_id) VALUES
+
         <foreach collection="list" item="item"  index="index" separator=",">
             (
             <if test="#{item.consignee_number}!=null and #{item.consignee_number}!='' ">#{item.consignee_number}, </if>

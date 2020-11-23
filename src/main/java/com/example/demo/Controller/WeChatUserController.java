@@ -21,7 +21,6 @@ public class WeChatUserController {
     public CommonResult WeChatUser(WeChatConfig weChatConfig) {
         try {
             String c = HttpUtils.sendGet(
-
                     "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=" + weChatConfig.getID()+"&corpsecret=" + weChatConfig.getSECRET()
             );
             JSONObject json= JSONObject.parseObject(c);

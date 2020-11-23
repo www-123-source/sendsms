@@ -34,7 +34,7 @@ where
          and teacher.Job_position_id = job_position.Job_position_id
          and teacher.working_department_id = working_department.working_department_id
          and ( teacher.teacher_id = tagmap.teacher_id
-				 and tagmap.teacher_tag_id = tag.tag_id)
+		 and tagmap.teacher_tag_id = tag.tag_id)
     </sql>
 
     <select id="selectTeacherDepartment" resultType="com.example.demo.Entity.Teacher">
@@ -69,7 +69,13 @@ where
 	    and teacher.teacher_name = #{tagName}
     </delete>
 
+    <insert id="insertTagName" parameterType="Teacher">
+       insert into tagmap (teacher_tag_id,teacher_id)VALUES(#{teacherTagId},(SELECT teacher.teacher_id
+	   FROM teacher WHERE teacher.teacher_name = #{teacherName}))
+    </insert>
 
-
+    <insert id="insertTag" parameterType="Teacher">
+       insert into tag(tag_id,tag_name) VALUES(#{tagId},#{tagName})
+    </insert>
 
 </mapper>
